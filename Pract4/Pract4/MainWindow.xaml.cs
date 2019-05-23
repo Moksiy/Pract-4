@@ -77,10 +77,10 @@ namespace Pract4
                     box.Margin = new Thickness(200 + xx, 0 + yy, 0, 0);
                     box.Text = Convert.ToString(rnd.Next(0,99));
                     Grid.Children.Add(box);
-                    yy += 35;
+                    xx += 35;
                 }
-                xx += 35;
-                yy = 35;
+                yy += 35;
+                xx = 35;
             }
         }
 
@@ -97,7 +97,7 @@ namespace Pract4
             var minimum = new List<double>();
             foreach (TextBox box in Grid.Children)
             {
-                if (i%data.XMatrix != 0)
+                if (i%data.YMatrix != 0)
                 {
                     if (min > Convert.ToDouble(box.Text))
                     { min = Convert.ToDouble(box.Text); }
@@ -107,10 +107,11 @@ namespace Pract4
                     { min = Convert.ToDouble(box.Text); }
                     minimum.Add(min);
                     i = 0;
+                    min = 100;
                 }
                 i++;
             }
-            res = minimum.Min();
+            res = minimum.Max();
             return res;
         }
     }
