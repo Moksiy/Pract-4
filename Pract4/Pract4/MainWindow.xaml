@@ -38,10 +38,11 @@
             <TextBlock>9</TextBlock>
             <TextBlock>10</TextBlock>
         </ComboBox>
+        <TextBlock HorizontalAlignment="Left" Margin="58,355,0,0" TextWrapping="Wrap" Text="Результат" VerticalAlignment="Top" Width="61" Height="20"/>
+        <TextBlock Name ="Result" HorizontalAlignment="Left" Margin="58,375,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="61" Height="20"/>
+        <Button Content="Вычислить" HorizontalAlignment="Left" Margin="42,147,0,0" VerticalAlignment="Top" Width="104" Height="27" Background="#FF777777" Click="Button_Click_1"/>
         <TextBlock HorizontalAlignment="Left" Margin="89,61,0,0" TextWrapping="Wrap" Text="Х" VerticalAlignment="Top" Width="12" Height="20"/>
-        <Grid Name ="Grid" HorizontalAlignment="Left" Height="426" VerticalAlignment="Top" Width="618">
-            
-        </Grid>
+        <Grid Name ="Grid" HorizontalAlignment="Left" Height="426" VerticalAlignment="Top" Width="618"/>
 
     </Grid>
 </Window>

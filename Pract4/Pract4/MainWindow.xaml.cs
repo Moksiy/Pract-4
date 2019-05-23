@@ -62,7 +62,6 @@ namespace Pract4
         {
             Random rnd = new Random();
             Grid.Children.Clear();
-            TextBox[,] elements = new TextBox[data.XMatrix, data.YMatrix];
             int xx = 35;
             int yy = 35;
             for (int i = 0; i < data.XMatrix; i++)
@@ -77,7 +76,6 @@ namespace Pract4
                     
                     box.Margin = new Thickness(200 + xx, 0 + yy, 0, 0);
                     box.Text = Convert.ToString(rnd.Next(0,99));
-                    elements[i, j] = box;
                     Grid.Children.Add(box);
                     yy += 35;
                 }
@@ -86,5 +84,34 @@ namespace Pract4
             }
         }
 
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Result.Text = Convert.ToString(Calculate());
+        }
+
+        private double Calculate()
+        {
+            double res = 0;
+            double min = 100;
+            int i = 1;
+            var minimum = new List<double>();
+            foreach (TextBox box in Grid.Children)
+            {
+                if (i%data.XMatrix != 0)
+                {
+                    if (min > Convert.ToDouble(box.Text))
+                    { min = Convert.ToDouble(box.Text); }
+                }else
+                {
+                    if (min > Convert.ToDouble(box.Text))
+                    { min = Convert.ToDouble(box.Text); }
+                    minimum.Add(min);
+                    i = 0;
+                }
+                i++;
+            }
+            res = minimum.Min();
+            return res;
+        }
     }
 }
