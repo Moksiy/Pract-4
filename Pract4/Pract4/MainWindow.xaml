@@ -5,8 +5,43 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pract4"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="MainWindow" Height="455.6" Width="624.8" ResizeMode="NoResize">
+    <Grid  Background="#FF4E4E4E">
+        <Button Content="Добавить" HorizontalAlignment="Left" Margin="42,104,0,0" VerticalAlignment="Top" Width="104" Height="27" Click="Button_Click" Background="#FF777777"/>
+        <ComboBox Name ="X" HorizontalAlignment="Left" Margin="42,59,0,0" VerticalAlignment="Top" Width="42" SelectionChanged="X_SelectionChanged_1" Background="Black" >
+            <TextBlock>1</TextBlock>
+            <TextBlock>2</TextBlock>
+            <TextBlock>3</TextBlock>
+            <TextBlock>4</TextBlock>
+            <TextBlock>5</TextBlock>
+            <TextBlock>6</TextBlock>
+            <TextBlock>7</TextBlock>
+            <TextBlock>8</TextBlock>
+            <TextBlock>9</TextBlock>
+            <TextBlock>10</TextBlock>
+        </ComboBox>
+        <ComboBox Name ="Y" HorizontalAlignment="Left" Margin="101,59,0,0" VerticalAlignment="Top" Width="45" SelectionChanged="Y_SelectionChanged_1" >
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                    <GradientStop Color="#FF903232" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+            <TextBlock>1</TextBlock>
+            <TextBlock>2</TextBlock>
+            <TextBlock>3</TextBlock>
+            <TextBlock>4</TextBlock>
+            <TextBlock>5</TextBlock>
+            <TextBlock>6</TextBlock>
+            <TextBlock>7</TextBlock>
+            <TextBlock>8</TextBlock>
+            <TextBlock>9</TextBlock>
+            <TextBlock>10</TextBlock>
+        </ComboBox>
+        <TextBlock HorizontalAlignment="Left" Margin="89,61,0,0" TextWrapping="Wrap" Text="Х" VerticalAlignment="Top" Width="12" Height="20"/>
+        <Grid Name ="Grid" HorizontalAlignment="Left" Height="426" VerticalAlignment="Top" Width="618">
+            
+        </Grid>
+
     </Grid>
 </Window>
