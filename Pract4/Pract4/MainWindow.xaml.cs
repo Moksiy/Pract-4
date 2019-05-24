@@ -50,12 +50,12 @@ namespace Pract4
 
         private void Y_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
-            /*Обработчик события выбора*/
+            /* Обработчик события выбора */
         }
 
         private void X_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
-            /*Обработчик события выбора*/
+            /* Обработчик события выбора */
         }
 
         private void GenerateTextBoxes()
