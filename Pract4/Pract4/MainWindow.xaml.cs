@@ -21,6 +21,9 @@ using System.Windows.Shapes;
 
 namespace Pract4
 {
+    /// <summary>
+    /// Класс со свойствами 
+    /// </summary>
     public class Data
     {
         public byte XMatrix { get; set; }
@@ -32,12 +35,19 @@ namespace Pract4
     /// </summary>
     public partial class MainWindow : Window
     {
+        bool ready = false;
+
         Data data = new Data();
         public MainWindow()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Обработчик на нажатие клавишы Вычислить
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (X.Text != "" && Y.Text != "")
@@ -45,19 +55,14 @@ namespace Pract4
                 data.XMatrix = Convert.ToByte(X.Text);
                 data.YMatrix = Convert.ToByte(Y.Text);
                 GenerateTextBoxes();
-            }else { MessageBox.Show("Выберите размерность таблицы"); }
+                ready = true;
+            }
+            else { MessageBox.Show("Выберите размерность таблицы"); }
         }
 
-        private void Y_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
-        {
-            /* Обработчик события выбора */
-        }
-
-        private void X_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
-        {
-            /* Обработчик события выбора */
-        }
-
+        /// <summary>
+        /// Метод динамического создания TextBox'ов
+        /// </summary>
         private void GenerateTextBoxes()
         {
             Random rnd = new Random();
@@ -73,9 +78,9 @@ namespace Pract4
                     box.Width = 30;
                     box.HorizontalAlignment = HorizontalAlignment.Left;
                     box.VerticalAlignment = VerticalAlignment.Top;
-                    
+
                     box.Margin = new Thickness(200 + xx, 0 + yy, 0, 0);
-                    box.Text = Convert.ToString(rnd.Next(0,99));
+                    box.Text = Convert.ToString(rnd.Next(-9, 99));
                     Grid.Children.Add(box);
                     xx += 35;
                 }
@@ -84,34 +89,49 @@ namespace Pract4
             }
         }
 
+        /// <summary>
+        /// Вывод результата
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Result.Text = Convert.ToString(Calculate());
+            if (true)
+            {
+                Result.Text = Convert.ToString(Calculate());
+            }
         }
 
+        /// <summary>
+        /// Метод подсчета минимального значения
+        /// </summary>
+        /// <returns></returns>
         private double Calculate()
         {
             double res = 0;
-            double min = 100;
-            int i = 1;
+            double min = 0;
+            int count = 1;
+            double s = 0;
             var minimum = new List<double>();
             foreach (TextBox box in Grid.Children)
             {
-                if (i%data.YMatrix != 0)
+                if (Double.TryParse(box.Text, out s))
                 {
-                    if (min > Convert.ToDouble(box.Text))
-                    { min = Convert.ToDouble(box.Text); }
-                }else
-                {
-                    if (min > Convert.ToDouble(box.Text))
-                    { min = Convert.ToDouble(box.Text); }
-                    minimum.Add(min);
-                    i = 0;
-                    min = 100;
+                    if (count == 1) { min = Convert.ToDouble(box.Text); }
                 }
-                i++;
+                if (!Double.TryParse(box.Text, out s)) { }
+                else
+                {
+                    if (min > Convert.ToDouble(box.Text))
+                    { min = Convert.ToDouble(box.Text); }
+                    if (count % data.YMatrix == 0) { minimum.Add(min); };
+                    if (count % (data.YMatrix) == 0) { min = Convert.ToDouble(box.Text); }
+                    if (count == data.YMatrix) { count = 1; }
+                    else
+                    { count++; }
+                }
             }
-            res = minimum.Max();
+            res = Convert.ToDouble(minimum.Max());
             return res;
         }
     }
